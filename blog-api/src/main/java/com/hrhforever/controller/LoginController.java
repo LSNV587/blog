@@ -20,7 +20,7 @@ import com.hrhforever.common.constant.Base;
 import com.hrhforever.common.constant.ResultCode;
 import com.hrhforever.common.result.Result;
 import com.hrhforever.entity.User;
-import com.hrhforever.oauth.OAuthSessionManager;
+import com.hrhforever.shiro.OAuthSessionManager;
 import com.hrhforever.service.UserService;
 
 /**

@@ -15,9 +15,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.hrhforever.common.cache.RedisManager;
-import com.hrhforever.oauth.OAuthRealm;
-import com.hrhforever.oauth.OAuthSessionDAO;
-import com.hrhforever.oauth.OAuthSessionManager;
+import com.hrhforever.shiro.OAuthRealm;
+import com.hrhforever.shiro.OAuthSessionDAO;
+import com.hrhforever.shiro.OAuthSessionManager;
 
 @Configuration
 public class ShiroConfig {
