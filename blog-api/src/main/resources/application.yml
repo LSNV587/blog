@@ -1,0 +1,54 @@
+logging:
+    config: classpath:log4j2-spring.xml
+me:
+    upload:
+        path: D:/workspace/blog/blogFile
+server:
+    port: 8888
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/blog??characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+        hikari:
+              ## 最小空闲连接数量
+              minimum-idle: 10
+              ## 空闲连接存活最大时间，默认600000（10分钟）
+              idle-timeout: 180000
+              ## 连接池最大连接数，默认是10
+              maximum-pool-size: 100
+              ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+              auto-commit: true
+              ## 连接池母子
+              pool-name: MyHikariCP
+              ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+              max-lifetime: 1800000
+              ## 数据库连接超时时间,默认30秒，即30000
+              connection-timeout: 30000
+              connection-test-query: SELECT 1
+    http:
+        multipart:
+            maxFileSize: 20Mb
+            maxRequestSize: 30Mb
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+    mvc:
+        static-path-pattern: /**
+    redis:
+        database: 0
+        host: localhost
+        password: 123456
+        port: 6379
+        timeout: 10000
+        pool:
+            max-idle: 10
+            min-idle: 0
+            max-active: 20
+            max-wait: -1
+
+    resources:
+        static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${me.upload.path}

@@ -1,3 +1,4 @@
 blog-api/.mvn/
 blog-api/blog/
 blog-app/node_modules/
+.idea/
