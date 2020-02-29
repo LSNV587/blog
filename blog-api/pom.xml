@@ -3,20 +3,16 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.hrhforever</groupId>
+	<parent>
+		<groupId>com.hrhforever</groupId>
+		<artifactId>springboot-vue-blog-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 	<artifactId>blog-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>blog-api</name>
 	<description>restful service for blog</description>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
-		<relativePath/>
-	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
