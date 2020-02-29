@@ -23,9 +23,8 @@ Object.defineProperty(Vue.prototype, '$_', { value: lodash })
 
 
 Vue.directive('title',  function (el, binding) {
-  //  dataset是h5新增的一个属性，可以获取到自定义的属性
-  // document.title = el.dataset.title
-  document.title = 'LUCKY-HOPEFUL'
+  console.log(el)
+  document.title = el.dataset.title
 })
 // 格式话时间
 Vue.filter('format', formatTime)
