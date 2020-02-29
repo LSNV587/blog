@@ -2,3 +2,5 @@ blog-api/.mvn/
 blog-api/blog/
 blog-app/node_modules/
 .idea/
+.history/blog-app/config/dev.env_20200229132520.js
+.history/
