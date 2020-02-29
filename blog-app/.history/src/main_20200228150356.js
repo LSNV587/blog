@@ -23,7 +23,8 @@ Object.defineProperty(Vue.prototype, '$_', { value: lodash })
 
 
 Vue.directive('title',  function (el, binding) {
-  //  dataset是h5新增的一个属性，可以获取到自定义的属性
+  console.log(el)
+  console.log(el.dataset)
   // document.title = el.dataset.title
   document.title = 'LUCKY-HOPEFUL'
 })
