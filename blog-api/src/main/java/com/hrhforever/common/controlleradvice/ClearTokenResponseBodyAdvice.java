@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.hrhforever.common.cache.RedisManager;
 import com.hrhforever.common.result.Result;
-import com.hrhforever.shiro.OAuthSessionManager;
+import com.hrhforever.oauth.OAuthSessionManager;
 
 //@ControllerAdvice
 @Deprecated
