@@ -2,3 +2,12 @@ blog-api/.mvn/
 blog-api/blog/
 blog-app/node_modules/
 .idea/
+blog-app/dist/
+blog-app/node/node_modules/npm/html/doc/cli/npm-pack.html
+blog-app/node/node_modules/
+blog-app/node/node.exe
+blog-app/node/npm
+blog-app/node/
+blog-app/target/
+blog-app/blog-app.iml
+blog/blog.log
