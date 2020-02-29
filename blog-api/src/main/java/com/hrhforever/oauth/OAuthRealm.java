@@ -1,4 +1,4 @@
-package com.hrhforever.shiro;
+package com.hrhforever.oauth;
 
 import java.util.HashSet;
 import java.util.Set;

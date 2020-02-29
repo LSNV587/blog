@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.hrhforever.common.cache.RedisManager;
-import com.hrhforever.shiro.OAuthSessionManager;
+import com.hrhforever.oauth.OAuthSessionManager;
 
 /**
  * Session超时，通知前端删除token
