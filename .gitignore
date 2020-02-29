@@ -11,3 +11,4 @@ blog-app/node/
 blog-app/target/
 blog-app/blog-app.iml
 blog/blog.log
+.history/
