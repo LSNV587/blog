@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.alibaba.fastjson.support.spring.annotation.FastJsonFilter;
 import com.alibaba.fastjson.support.spring.annotation.FastJsonView;
 import com.hrhforever.common.annotation.LogAnnotation;
+import com.hrhforever.service.TestService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -36,7 +37,19 @@ import com.hrhforever.service.UserService;
 public class UserController {
 
     @Autowired
+    private TestService testService;
+
+    @Autowired
     private UserService userService;
+
+    @GetMapping("/allUser")
+    @LogAnnotation(module = "用户", operation = "测试获取所有用户")
+    //@RequiresRoles(Base.ROLE_ADMIN)
+    public Result findAllUsers() {
+        List<User> users = testService.findAll();
+
+        return Result.success(users);
+    }
 
     @GetMapping
     @LogAnnotation(module = "用户", operation = "获取所有用户")

@@ -52,3 +52,11 @@ spring:
 
     resources:
         static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${me.upload.path}
+#mybatis的相关配置
+mybatis:
+    #mapper配置文件
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.zhg.demo.mybatis.entity
+    #开启驼峰命名
+    configuration:
+        map-underscore-to-camel-case: true
