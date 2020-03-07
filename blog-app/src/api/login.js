@@ -1,16 +1,18 @@
-import request from '@/request'
+// import request from '@/request'
+import request from '@/utils/request'
 
-export function login(account, password) {
-  const data = {
-    account,
-    password
-  }
-  return request({
-    url: '/login',
-    method: 'post',
-    data
-  })
-}
+export var loginByUserName = loginData => request.post('/login', loginData)
+// export function login(account, password) {
+//   const data = {
+//     account,
+//     password
+//   }
+//   return request({
+//     url: '/login',
+//     method: 'post',
+//     data
+//   })
+// }
 
 export function logout() {
   return request({
