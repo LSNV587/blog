@@ -1,7 +1,7 @@
 // import request from '@/request'
 import request from '@/utils/request'
 
-export var loginByUserName = loginData => request.post('/login', loginData)
+export var LoginByUsername = loginData => request.post('/login', loginData)
 // export function login(account, password) {
 //   const data = {
 //     account,

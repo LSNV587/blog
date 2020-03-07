@@ -50,7 +50,7 @@
               username: this.userForm.account,
               password: this.userForm.password
             }
-            this.$store.dispatch('login', loginData).then(() => {
+            this.$store.dispatch('LoginByUsername', loginData).then(() => {
               this.$router.go(-1)
             }).catch((error) => {
               if (error !== 'error') {
