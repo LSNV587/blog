@@ -70,7 +70,7 @@
   #login {
     min-width: 100%;
     min-height: 670px;
-    background-color: #fce3e7;
+    background-color: #FBD6DD;
     img {
       width: 100%
     }
