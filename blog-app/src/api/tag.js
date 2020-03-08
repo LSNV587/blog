@@ -1,36 +1,22 @@
-import request from '@/request'
+import request1 from '@/request'
+import request from '@/utils/request'
+export var getAllTags = params => request.get('/tags', params, 'application/json')
+export var getAllTagsDetail = params => request.get('/tags/detail', params, 'application/json')
+export var getHotTags = params => request.get('/tags/hot', params, 'application/json')
+export var getTag = params => request.get('/tags', params, 'application/json')
+export var getTagDetail = params => request.get('/tags/detail', params, 'application/json')
 
-export function getAllTags() {
-  return request({
-    url: '/tags',
-    method: 'get',
-  })
-}
 
-export function getAllTagsDetail() {
-  return request({
-    url: '/tags/detail',
-    method: 'get',
-  })
-}
+// export function getTag(id) {
+//   return request1({
+//     url: `/tags/${id}`,
+//     method: 'get',
+//   })
+// }
 
-export function getHotTags() {
-  return request({
-    url: '/tags/hot',
-    method: 'get',
-  })
-}
-
-export function getTag(id) {
-  return request({
-    url: `/tags/${id}`,
-    method: 'get',
-  })
-}
-
-export function getTagDetail(id) {
-  return request({
-    url: `/tags/detail/${id}`,
-    method: 'get',
-  })
-}
+// export function getTagDetail(id) {
+//   return request1({
+//     url: `/tags/detail/${id}`,
+//     method: 'get',
+//   })
+// }
