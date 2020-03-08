@@ -71,7 +71,7 @@
     },
     computed: {
       user() {
-        let login = this.$store.state.user.account.length != 0
+        let login = this.$store.state.user.account !== undefined
         let avatar = this.$store.state.user.avatar
         return {
           login, avatar

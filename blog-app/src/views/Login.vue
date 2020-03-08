@@ -47,7 +47,7 @@
         this.$refs.userForm.validate((valid) => {
           if (valid) {
             const loginData = {
-              username: this.userForm.account,
+              account: this.userForm.account,
               password: this.userForm.password
             }
             this.$store.dispatch('LoginByUsername', loginData).then(() => {
@@ -58,9 +58,9 @@
               }
             })
           } else {
-            return false;
+            return false
           }
-        });
+        })
       }
     }
   }

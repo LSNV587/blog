@@ -54,12 +54,11 @@
     },
     methods: {
       getHotArtices() {
-        let that = this
         getHotArtices().then(data => {
-          that.hotArticles = data.data
+          this.hotArticles = data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '最热文章加载失败!', showClose: true})
+            this.$message({type: 'error', message: '最热文章加载失败!', showClose: true})
           }
 
         })
@@ -93,7 +92,7 @@
           this.archives = data.data
         })).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '文章归档加载失败!', showClose: true})
+            this.$message({type: 'error', message: '文章归档加载失败!', showClose: true})
           }
         })
       }

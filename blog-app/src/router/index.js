@@ -79,18 +79,22 @@ const router = new Router({
   }
 })
 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 router.beforeEach((to, from, next) => {
 
   if (getToken()) {
-
     if (to.path === '/login') {
-      next({path: '/'})
+      next()
     } else {
-      if (store.state.account.length === 0) {
+      if (store.state.account=== undefined) {
         store.dispatch('getUserInfo').then(data => { //获取用户信息
           next()
         }).catch(() => {
-          next({path: '/'})
+          next()
         })
       } else {
         next()

@@ -1,5 +1,6 @@
-import {getToken, setToken, removeToken} from '@/request/token'
+// import {getToken, setToken, removeToken} from '@/request/token' 
 import {LoginByUsername, getUserInfo, logout, register} from '@/api/login'
+import { getToken,setToken, removeToken} from '@/utils/auth'
 const user = {
   state: {
     id: '',
@@ -26,10 +27,9 @@ const user = {
     }
   },
   actions: {
-    LoginByUsername({commit}, loginData) {
-      console.log(loginData)
+    LoginByUsername({commit}, userInfo) {
       return new Promise((resolve, reject) => {
-        LoginByUsername(loginData).then(data => {
+        LoginByUsername(userInfo).then(data => {
           commit('SET_TOKEN', data.data['Oauth-Token'])
           setToken(data.data['Oauth-Token'])
           resolve()

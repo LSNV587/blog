@@ -73,12 +73,11 @@ const service = axios.create({
 
 export default {
   post(url, sourceData, contentType) {
-    const type = contentType || 'application/json'
+    const type = contentType || 'application/json '
     const data = contentType ? sourceData : qs.stringify(sourceData)
     return service({
       method: 'post',
       url,
-      // data: qs.stringify(data),
       data,
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
