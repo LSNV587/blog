@@ -10,7 +10,7 @@ package com.hrhforever.common.constant;
 public enum ResultCode {
 
     /* 成功状态码 */
-    SUCCESS(0, "成功"),
+    SUCCESS(200, "成功"),
     ERROR(1, "失败"),
 
     /* 参数错误：10001-19999 */
