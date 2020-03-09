@@ -32,7 +32,7 @@
       <el-col :span="4">
         <el-menu :router=true menu-trigger="click" mode="horizontal" active-text-color="#5FB878">
 
-          <template v-if="!user.login">
+          <template v-if="!this.account">
             <el-menu-item index="/login">
               <el-button type="text">登录</el-button>
             </el-menu-item>
@@ -44,7 +44,7 @@
           <template v-else>
             <el-submenu index>
               <template slot="title">
-                <img class="me-header-picture" :src="user.avatar"/>
+                <img class="me-header-picture"/>
               </template>
               <el-menu-item index @click="logout"><i class="el-icon-back"></i>退出</el-menu-item>
             </el-submenu>
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
   export default {
     name: 'BaseHeader',
     props: {
@@ -70,13 +71,21 @@
       return {}
     },
     computed: {
-      user() {
-        let login = this.$store.state.user.account !== undefined
-        let avatar = this.$store.state.user.avatar
-        return {
-          login, avatar
-        }
-      }
+      // user() {
+      //   console.log(this.$store.state, 'this.$store.state')
+      //   let login = this.$store.state.user.account !== ''
+      //   let avatar = this.$store.state.user.avatar
+      //   console.log(login, avatar, 'login, avatar')
+      //   return {
+      //     login, avatar
+      //   }
+      // }
+      ...mapGetters([
+        'account'
+      ])
+    },
+    created () {
+      console.log(this.account)
     },
     methods: {
       logout() {

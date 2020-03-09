@@ -4,7 +4,7 @@ import { getToken,setToken, removeToken} from '@/utils/auth'
 const user = {
   state: {
     id: '',
-    account: '',
+    account: window.sessionStorage.getItem('account') ? JSON.parse(window.sessionStorage.getItem('account')) : '',
     name: '',
     avatar: '',
     token: getToken(),
@@ -15,6 +15,7 @@ const user = {
     },
     SET_ACCOUNT: (state, account) => {
       state.account = account
+      window.sessionStorage.setItem('account', JSON.stringify('account'))
     },
     SET_NAME: (state, name) => {
       state.name = name
