@@ -4,7 +4,7 @@ import { getToken,setToken, removeToken} from '@/utils/auth'
 const user = {
   state: {
     id: '',
-    account: window.sessionStorage.getItem('account') ? JSON.parse(window.sessionStorage.getItem('account')) : '',
+    account: '',
     name: '',
     avatar: '',
     token: getToken(),
@@ -15,7 +15,7 @@ const user = {
     },
     SET_ACCOUNT: (state, account) => {
       state.account = account
-      window.sessionStorage.setItem('account', JSON.stringify('account'))
+      // window.sessionStorage.setItem('account', JSON.stringify(account))
     },
     SET_NAME: (state, name) => {
       state.name = name
@@ -31,8 +31,8 @@ const user = {
     LoginByUsername({commit}, userInfo) {
       return new Promise((resolve, reject) => {
         LoginByUsername(userInfo).then(data => {
-          commit('SET_TOKEN', data.data['Oauth-Token'])
-          setToken(data.data['Oauth-Token'])
+          commit('SET_TOKEN', data.data.data['Oauth-Token'])
+          setToken(data.data.data['Oauth-Token'])
           resolve()
         }).catch(error => {
           reject(error)
@@ -40,8 +40,7 @@ const user = {
       })
     },
     // 获取用户信息
-    getUserInfo({commit, state}) {
-      let that = this
+    GetUserInfo({commit, state}) {
       return new Promise((resolve, reject) => {
         getUserInfo().then(data => {
           if (data.data) {
@@ -66,7 +65,6 @@ const user = {
     logout({commit, state}) {
       return new Promise((resolve, reject) => {
         logout().then(data => {
-
           commit('SET_TOKEN', '')
           commit('SET_ACCOUNT', '')
           commit('SET_NAME', '')
@@ -96,9 +94,9 @@ const user = {
     },
     register({commit}, user) {
       return new Promise((resolve, reject) => {
-        register(user.account, user.nickname, user.password).then((data) => {
-          commit('SET_TOKEN', data.data['Oauth-Token'])
-          setToken(data.data['Oauth-Token'])
+        register(user).then((data) => {
+          commit('SET_TOKEN', data.data.data['Oauth-Token'])
+          setToken(data.data.data['Oauth-Token'])
           resolve()
         }).catch((error) => {
           reject(error)

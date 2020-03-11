@@ -17,6 +17,9 @@
           <el-button type="primary" @click.native.prevent="login">登录</el-button>
         </el-form-item>
       </el-form>
+      <div class='register'>
+        <router-link to='/register'>没有账号？-----> 注册</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -45,13 +48,14 @@
     methods: {
       login() {
         this.$refs.userForm.validate((valid) => {
+            // this.$router.push({path: '/Home'})
           if (valid) {
             const loginData = {
               account: this.userForm.account,
               password: this.userForm.password
             }
             this.$store.dispatch('LoginByUsername', loginData).then(() => {
-              this.$router.go(-1)
+              this.$router.push({path: '/Home'})
             }).catch((error) => {
               if (error !== 'error') {
                 this.$message({message: error, type: 'error', showClose: true});
@@ -104,8 +108,17 @@
       width: 100%;
    
   }
-  
+  .register{
+    text-align: center;
+    font-size: 20px;
+    a{
+      color: #ffffff
     }
+    :hover {
+      color: #12ea4f
+    }
+  }
+}
   // .me-video-player {
   //   background-color: transparent;
   //   width: 100%;

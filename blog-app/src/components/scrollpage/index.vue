@@ -35,44 +35,44 @@
       }
     },
     methods: {
-      handleScroll(e) {
-        var that = this
-        if (!that.noData) {
-          let curHeight = document.documentElement.scrollTop || document.body.scrollTop
-          var scrollPage = document.getElementById('scroll-page');
+      // handleScroll(e) {
+      //   var that = this
+      //   if (!that.noData) {
+      //     let curHeight = document.documentElement.scrollTop || document.body.scrollTop
+      //     var scrollPage = document.getElementById('scroll-page');
 
-          if ((curHeight + window.innerHeight >= that.$refs.scroll.offsetHeight + that.offset) && that.isDownDirection()) {
-            if (!that.loading) {
-              that.$emit('load')
-            }
-          }
-        }
-      },
-      isDownDirection() {
-        if (typeof this.scrollAction.x == 'undefined') {
-          this.scrollAction.x = window.pageXOffset;
-          this.scrollAction.y = window.pageYOffset;
-        }
-        var diffX = this.scrollAction.x - window.pageXOffset;
-        var diffY = this.scrollAction.y - window.pageYOffset;
+      //     if ((curHeight + window.innerHeight >= that.$refs.scroll.offsetHeight + that.offset) && that.isDownDirection()) {
+      //       if (!that.loading) {
+      //         that.$emit('load')
+      //       }
+      //     }
+      //   }
+      // },
+      // isDownDirection() {
+      //   if (typeof this.scrollAction.x == 'undefined') {
+      //     this.scrollAction.x = window.pageXOffset;
+      //     this.scrollAction.y = window.pageYOffset;
+      //   }
+      //   var diffX = this.scrollAction.x - window.pageXOffset;
+      //   var diffY = this.scrollAction.y - window.pageYOffset;
 
-        this.scrollAction.x = window.pageXOffset;
-        this.scrollAction.y = window.pageYOffset;
+      //   this.scrollAction.x = window.pageXOffset;
+      //   this.scrollAction.y = window.pageYOffset;
 
-        if (diffX < 0) {
-          // Scroll right
-        } else if (diffX > 0) {
-          // Scroll left
-        } else if (diffY < 0) {
-          // Scroll down
-          return true
-        } else if (diffY > 0) {
-          // Scroll up
-        } else {
-          // First scroll event
-        }
-        return false
-      }
+      //   if (diffX < 0) {
+      //     // Scroll right
+      //   } else if (diffX > 0) {
+      //     // Scroll left
+      //   } else if (diffY < 0) {
+      //     // Scroll down
+      //     return true
+      //   } else if (diffY > 0) {
+      //     // Scroll up
+      //   } else {
+      //     // First scroll event
+      //   }
+      //   return false
+      // }
 
     }
   }
