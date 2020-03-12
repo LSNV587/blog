@@ -21,7 +21,7 @@
         </el-form-item>
 
         <el-form-item size="small" class="me-login-button">
-          <el-button type="primary" @click.native.prevent="register('userForm')">注册</el-button>
+          <el-button type="primary" @click.native.prevent="register">注册</el-button>
         </el-form-item>
       </el-form>
 
@@ -67,27 +67,23 @@
       }
     },
     methods: {
-      register(formName) {
-        let that = this
-        this.$refs[formName].validate((valid) => {
+      register() {
+        this.$refs.userForm.validate((valid) => {
           if (valid) {
-
-            that.$store.dispatch('register', that.userForm).then(() => {
-              that.$message({message: '注册成功 快写文章吧', type: 'success', showClose: true});
-              that.$router.push({path: '/'})
+            console.log(this.userForm)
+            this.$store.dispatch('register', this.userForm).then(() => {
+              this.$message({message: '注册成功 快去登陆吧', type: 'success', showClose: true});
+              this.$router.push({path: '/login'})
             }).catch((error) => {
               if (error !== 'error') {
-                that.$message({message: error, type: 'error', showClose: true});
+                this.$message({message: error, type: 'error', showClose: true});
               }
             })
-
           } else {
-            return false;
+            return false
           }
-        });
-
+        })
       }
-
     }
   }
 </script>

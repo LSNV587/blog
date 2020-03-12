@@ -31,8 +31,8 @@
   import CardArchive from '@/components/card/CardArchive'
   import CardTag from '@/components/card/CardTag'
   import ArticleScrollPage from '@/views/common/ArticleScrollPage'
-
-  import {getArticles, getHotArtices, getNewArtices} from '@/api/article'
+// getArticles,
+  import {getHotArtices, getNewArtices} from '@/api/article'
   import {getHotTags} from '@/api/tag'
   import {listArchives} from '@/api/article'
 
@@ -55,7 +55,7 @@
     methods: {
       getHotArtices() {
         getHotArtices().then(data => {
-          this.hotArticles = data.data
+          this.hotArticles = data.data.data
         }).catch(error => {
           if (error !== 'error') {
             this.$message({type: 'error', message: '最热文章加载失败!', showClose: true})
@@ -65,31 +65,27 @@
 
       },
       getNewArtices() {
-        let that = this
         getNewArtices().then(data => {
-          that.newArticles = data.data
+          this.newArticles = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '最新文章加载失败!', showClose: true})
+            this.$message({type: 'error', message: '最新文章加载失败!', showClose: true})
           }
-
         })
-
       },
       getHotTags() {
-        let that = this
         getHotTags().then(data => {
-          that.hotTags = data.data
+          this.hotTags = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '最热标签加载失败!', showClose: true})
+            this.$message({type: 'error', message: '最热标签加载失败!', showClose: true})
           }
 
         })
       },
       listArchives() {
         listArchives().then((data => {
-          this.archives = data.data
+          this.archives = data.data.data
         })).catch(error => {
           if (error !== 'error') {
             this.$message({type: 'error', message: '文章归档加载失败!', showClose: true})

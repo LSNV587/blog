@@ -9,6 +9,7 @@ export function getToken() {
 }
 
 export function setToken(token) {
+  Cookies.set(AccessToken, token)
   return Cookies.set(AccessToken, token)
 }
 

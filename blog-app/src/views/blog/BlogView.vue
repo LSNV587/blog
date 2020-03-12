@@ -152,7 +152,7 @@
     },
     computed: {
       avatar() {
-        let avatar = this.$store.state.avatar
+        let avatar = ''
 
         if (avatar.length > 0) {
           return avatar
@@ -171,43 +171,41 @@
         this.$router.push({path: `/write/${this.article.id}`})
       },
       getArticle() {
-        let that = this
-        viewArticle(that.$route.params.id).then(data => {
-          Object.assign(that.article, data.data)
-          that.article.editor.value = data.data.body.content
+        console.log(this.$route.params.id, 'this.$route.params.id')
+        viewArticle(this.$route.params.id).then(data => {
+          console.log(data, '777')
+          Object.assign(this.article, data.data.data)
+          this.article.editor.value = data.data.body.content
 
-          that.getCommentsByArticle()
+          this.getCommentsByArticle()
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '文章加载失败', showClose: true})
+            this.$message({type: 'error', message: '文章加载失败', showClose: true})
           }
         })
       },
       publishComment() {
-        let that = this
-        if (!that.comment.content) {
-          return;
+        if (!this.comment.content) {
+          return
         }
-        that.comment.article.id = that.article.id
-
-        publishComment(that.comment).then(data => {
-          that.$message({type: 'success', message: '评论成功', showClose: true})
-          that.comments.unshift(data.data)
-          that.commentCountsIncrement()
-          that.comment.content = ''
+        this.comment.article.id = this.article.id
+        publishComment(this.comment).then(data => {
+          this.$message({type: 'success', message: '评论成功', showClose: true})
+          this.comments.unshift(data.data.data)
+          this.commentCountsIncrement()
+          this.comment.content = ''
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '评论失败', showClose: true})
+            this.$message({type: 'error', message: '评论失败', showClose: true})
           }
         })
       },
       getCommentsByArticle() {
-        let that = this
-        getCommentsByArticle(that.article.id).then(data => {
-          that.comments = data.data
+        getCommentsByArticle(this.article.id).then(data => {
+          this.comments = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '评论加载失败', showClose: true})
+            this.$message({type: 'error', message: '评论加载失败', showClose: true})
           }
         })
       },
