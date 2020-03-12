@@ -149,22 +149,17 @@
     },
     methods: {
       getArticleById(id) {
-        let that = this
         getArticleById(id).then(data => {
-
-          Object.assign(that.articleForm, data.data)
-          that.articleForm.editor.value = data.data.body.content
-
+          console.log(data, '999')
+          Object.assign(this.articleForm, data.data.data)
+          this.articleForm.editor.value = data.data.body.content
           let tags = this.articleForm.tags.map(function (item) {
             return item.id;
           })
-
           this.articleForm.tags = tags
-
-
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '文章加载失败', showClose: true})
+            this.$message({type: 'error', message: '文章加载失败', showClose: true})
           }
         })
       },
@@ -187,9 +182,6 @@
         this.publishVisible = true;
       },
       publish(articleForm) {
-
-        let that = this
-
         this.$refs[articleForm].validate((valid) => {
           if (valid) {
 
@@ -219,20 +211,20 @@
 
             publishArticle(article).then((data) => {
               loading.close();
-              that.$message({message: '发布成功啦', type: 'success', showClose: true})
-              that.$router.push({path: `/view/${data.data.articleId}`})
+              this.$message({message: '发布成功啦', type: 'success', showClose: true})
+              this.$router.push({path: `/view/${data.data.data.articleId}`})
 
             }).catch((error) => {
               loading.close();
               if (error !== 'error') {
-                that.$message({message: error, type: 'error', showClose: true});
+                this.$message({message: error, type: 'error', showClose: true});
               }
             })
 
           } else {
             return false;
           }
-        });
+        })
       },
       cancel() {
         this.$confirm('文章将不会保存, 是否继续?', '提示', {
@@ -244,20 +236,19 @@
         })
       },
       getCategorysAndTags() {
-        let that = this
         getAllCategorys().then(data => {
-          that.categorys = data.data
+          this.categorys = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '文章分类加载失败', showClose: true})
+            this.$message({type: 'error', message: '文章分类加载失败', showClose: true})
           }
         })
 
         getAllTags().then(data => {
-          that.tags = data.data
+          this.tags = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '标签加载失败', showClose: true})
+            this.$message({type: 'error', message: '标签加载失败', showClose: true})
           }
         })
 

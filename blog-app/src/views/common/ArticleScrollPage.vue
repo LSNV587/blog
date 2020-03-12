@@ -75,7 +75,6 @@
       getArticles() {
         this.loading = true
         getArticles(this.query, this.innerPage).then(data => {
-          console.log(data)
           let newArticles = data.data.data
           if (newArticles && newArticles.length > 0) {
             this.innerPage.pageNumber += 1

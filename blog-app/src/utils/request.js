@@ -9,6 +9,16 @@ const service = axios.create({
   baseURL: process.env.BASE_API,
   timeout: 10000
 })
+service.interceptors.request.use(config => {
+
+  if (store.getters.token) {
+    config.headers['Oauth-Token'] = getToken()
+  }
+  return config
+}, error => {
+
+  Promise.reject(error)
+})
 // service.interceptors.request.use(config => {
 //   if (store.getters.token && store.getters.refreshToken) {
 //     if (config.url.indexOf('oauth2/refresh_token') !== -1) {

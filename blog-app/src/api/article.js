@@ -1,10 +1,13 @@
-// import request from '@/request'
-
 import request from '@/utils/request'
 export var getHotArtices = pram => request.get('/articles/hot', pram, 'application/json')
 export var getNewArtices = pram => request.get('/articles/new', pram, 'application/json') 
 export var listArchives = pram => request.get('/articles/listArchives', pram, 'application/json') 
 export var getArticles = pram => request.get('/articles', pram, 'application/json') 
+export var getArticlesByCategory = pram => request.get('/articles/category', pram, 'application/json') 
+export var getArticlesByTag = pram => request.get('/articles/tag', pram, 'application/json') 
+export var viewArticle = pram => request.get('/articles/view', pram, 'application/json') 
+export var publishArticle = pram => request.post('/articles/publish', pram, 'application/json') 
+export var getArticleById = pram => request.get('/articles', pram, 'application/json') 
 
 // export function getArticles(query, page) {
 //   return request({
@@ -37,35 +40,35 @@ export var getArticles = pram => request.get('/articles', pram, 'application/jso
 //   })
 // }
 
-export function viewArticle(id) {
-  return request({
-    url: `/articles/view/${id}`,
-    method: 'get'
-  })
-}
+// export function viewArticle(id) {
+//   return request({
+//     url: `/articles/view/${id}`,
+//     method: 'get'
+//   })
+// }
 
-export function getArticlesByCategory(id) {
-  return request({
-    url: `/articles/category/${id}`,
-    method: 'get'
-  })
-}
+// export function getArticlesByCategory(id) {
+//   return request({
+//     url: `/articles/category/${id}`,
+//     method: 'get'
+//   })
+// }
 
-export function getArticlesByTag(id) {
-  return request({
-    url: `/articles/tag/${id}`,
-    method: 'get'
-  })
-}
+// export function getArticlesByTag(id) {
+//   return request({
+//     url: `/articles/tag/${id}`,
+//     method: 'get'
+//   })
+// }
 
 
-export function publishArticle(article) {
-  return request({
-    url: '/articles/publish',
-    method: 'post',
-    data: article
-  })
-}
+// export function publishArticle(article) {
+//   return request({
+//     url: '/articles/publish',
+//     method: 'post',
+//     data: article
+//   })
+// }
 
 // export function listArchives() {
 //   return request({
@@ -74,9 +77,9 @@ export function publishArticle(article) {
 //   })
 // }
 
-export function getArticleById(id) {
-  return request({
-    url: `/articles/${id}`,
-    method: 'get'
-  })
-}
+// export function getArticleById(id) {
+//   return request({
+//     url: `/articles/${id}`,
+//     method: 'get'
+//   })
+// }

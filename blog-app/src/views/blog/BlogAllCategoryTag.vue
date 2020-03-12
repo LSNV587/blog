@@ -83,22 +83,20 @@
         this.$router.push({path: `/${this.currentActiveName}/${id}`})
       },
       getCategorys() {
-        let that = this
         getAllCategorysDetail().then(data => {
-          that.categorys = data.data
+          this.categorys = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '文章分类加载失败', showClose: true})
+            this.$message({type: 'error', message: '文章分类加载失败', showClose: true})
           }
         })
       },
       getTags() {
-        let that = this
         getAllTagsDetail().then(data => {
-          that.tags = data.data
+          this.tags = data.data.data
         }).catch(error => {
           if (error !== 'error') {
-            that.$message({type: 'error', message: '标签加载失败', showClose: true})
+            this.$message({type: 'error', message: '标签加载失败', showClose: true})
           }
         })
       }
