@@ -11,7 +11,7 @@
           <el-input placeholder="用户名" v-model="userForm.account" auto-complete="on"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input placeholder="密码" type="password" v-model="userForm.password" auto-complete="on"></el-input>
+          <el-input placeholder="密码" type="password" @keyup.enter.native="login" v-model="userForm.password" auto-complete="on"></el-input>
         </el-form-item>
         <el-form-item size="small" class="me-login-button">
           <el-button type="primary" @click.native.prevent="login">登录</el-button>
