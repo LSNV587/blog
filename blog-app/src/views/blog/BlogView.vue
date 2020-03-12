@@ -171,12 +171,9 @@
         this.$router.push({path: `/write/${this.article.id}`})
       },
       getArticle() {
-        console.log(this.$route.params.id, 'this.$route.params.id')
         viewArticle(this.$route.params.id).then(data => {
-          console.log(data, '777')
           Object.assign(this.article, data.data.data)
-          this.article.editor.value = data.data.body.content
-
+          this.article.editor.value = data.data.data.body.content
           this.getCommentsByArticle()
         }).catch(error => {
           if (error !== 'error') {

@@ -70,7 +70,6 @@
       register() {
         this.$refs.userForm.validate((valid) => {
           if (valid) {
-            console.log(this.userForm)
             this.$store.dispatch('register', this.userForm).then(() => {
               this.$message({message: '注册成功 快去登陆吧', type: 'success', showClose: true});
               this.$router.push({path: '/login'})
