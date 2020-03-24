@@ -44,7 +44,7 @@
           <template v-else>
             <el-submenu index>
               <template slot="title">
-                <img class="me-header-picture"/>
+                <img class="me-header-picture" :src='this.avatar'/>
               </template>
               <el-menu-item index @click="logout"><i class="el-icon-back"></i>退出</el-menu-item>
             </el-submenu>
@@ -71,21 +71,9 @@ import { mapGetters } from 'vuex'
       return {}
     },
     computed: {
-      // user() {
-      //   console.log(this.$store.state, 'this.$store.state')
-      //   let login = this.$store.state.user.account !== ''
-      //   let avatar = this.$store.state.user.avatar
-      //   console.log(login, avatar, 'login, avatar')
-      //   return {
-      //     login, avatar
-      //   }
-      // }
       ...mapGetters([
-        'account'
+        'account','avatar'
       ])
-    },
-    created () {
-      // console.log(this.account)
     },
     methods: {
       logout() {

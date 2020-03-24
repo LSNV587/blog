@@ -4,7 +4,7 @@ import { getToken,setToken, removeToken} from '@/utils/auth'
 const user = {
   state: {
     id: '',
-    account: '',
+    account: window.sessionStorage.getItem('account') ? JSON.parse(window.sessionStorage.getItem('account')) : '',
     name: '',
     avatar: '',
     token: getToken(),
@@ -15,7 +15,7 @@ const user = {
     },
     SET_ACCOUNT: (state, account) => {
       state.account = account
-      // window.sessionStorage.setItem('account', JSON.stringify(account))
+      window.sessionStorage.setItem('account', JSON.stringify(account))
     },
     SET_NAME: (state, name) => {
       state.name = name
@@ -43,11 +43,12 @@ const user = {
     GetUserInfo({commit, state}) {
       return new Promise((resolve, reject) => {
         getUserInfo().then(data => {
-          if (data.data) {
-            commit('SET_ACCOUNT', data.data.account)
-            commit('SET_NAME', data.data.nickname)
-            commit('SET_AVATAR', data.data.avatar)
-            commit('SET_ID', data.data.id)
+          const datas = data.data.data
+          if (datas) {
+            commit('SET_ACCOUNT', datas.account)
+            commit('SET_NAME', datas.nickname)
+            commit('SET_AVATAR', datas.avatar)
+            commit('SET_ID', datas.id)
           } else {
             commit('SET_ACCOUNT', '')
             commit('SET_NAME', '')
